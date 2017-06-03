@@ -115,7 +115,7 @@ mkdir -p $OPENCV_DIR
 cd $OPENCV_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
-PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
+#PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
 
 echo "-----> Install libArcheLite.so"
@@ -129,6 +129,6 @@ mkdir -p $ARCHE_DIR
 cd $ARCHE_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
-PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
+#PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
 
