@@ -4,37 +4,6 @@
 #
 #     $ bin/compile <build-dir> <cache-dir>
 
-indent() {
-  sed -u 's/^/       /'
-}
-
-echo "-----> Install OpenCV-2-3-1"
-BUILD_DIR=$1
-OPENCV_DIR="opencv"
-DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR
-mkdir -p $OPENCV_DIR
-cd $OPENCV_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
-
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
-
-echo "-----> Install libArcheLite.so"
-ARCHE_DIR="arche"
-DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.tar.gz"
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR
-mkdir -p $ARCHE_DIR
-cd $ARCHE_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
-
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
-
 # Fail fast and fail hard.
 set -eo pipefail
 
@@ -129,3 +98,37 @@ source $BIN_DIR/steps/hooks/post_compile
 
 deep-mv $BUILD_DIR $ORIG_BUILD_DIR
 deep-mv $TMP_APP_DIR $APP_DIR
+
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Install OpenCV-2-3-1"
+BUILD_DIR=$1
+OPENCV_DIR="opencv"
+DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $OPENCV_DIR
+cd $OPENCV_DIR
+curl -L --silent $DOWNLOAD_URL | tar xz
+
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
+
+echo "-----> Install libArcheLite.so"
+ARCHE_DIR="arche"
+DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $ARCHE_DIR
+cd $ARCHE_DIR
+curl -L --silent $DOWNLOAD_URL | tar xz
+
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
+
