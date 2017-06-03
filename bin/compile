@@ -115,3 +115,5 @@ mkdir -p $OPENCV_DIR
 cd $OPENCV_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
+
