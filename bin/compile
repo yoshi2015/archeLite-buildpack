@@ -19,15 +19,3 @@ curl -L --silent $DOWNLOAD_URL | tar xz
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
 
 echo "-----> Install libArcheLite.so
-ARCHE_DIR="arche"
-DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.so
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR
-mkdir -p $ARCHE_DIR
-cd $ARCHE_DIR
-curl -L --silent $DOWNLOAD_URL
-
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
-
