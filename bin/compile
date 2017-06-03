@@ -20,16 +20,3 @@ ldconfig
 export PKG_CONFIG_PATH
 echo 'export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"' >> $PROFILE_PATH
 
-echo "-----> Install libArcheLite.so
-BIN_DIR="/usr/local/lib"
-DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.so
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-mkdir -p $BIN_DIR
-cd $BIN_DIR
-curl -L --silent $DOWNLOAD_URL
-
-echo "/usr/local/lib" > /etc/ld.so.conf.d/arche.conf
-ldconfig
-
