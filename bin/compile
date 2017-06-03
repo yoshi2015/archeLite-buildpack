@@ -6,19 +6,28 @@ indent() {
 
 echo "-----> Install OpenCV-2-3-1"
 BUILD_DIR=$1
-VENDOR_DIR="vendor"
+OPENCV_DIR="opencv"
 DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
 cd $BUILD_DIR
-mkdir -p $VENDOR_DIR
-cd $VENDOR_DIR
+mkdir -p $OPENCV_DIR
+cd $OPENCV_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
-echo "$BUILD_DIR/$VENDOR_DIR" > /etc/ld.so.conf.d/opencv.conf
-ldconfig
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
 
-export PKG_CONFIG_PATH
-echo 'export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$BUILD_DIR/$VENDOR_DIR/lib/pkgconfig"' >> $PROFILE_PATH
+echo "-----> Install libArcheLite.so
+ARCHE_DIR="arche"
+DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.so
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+cd $BUILD_DIR
+mkdir -p $ARCHE_DIR
+cd $ARCHE_DIR
+curl -L --silent $DOWNLOAD_URL
+
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
 
