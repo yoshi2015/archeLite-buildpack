@@ -1,0 +1,35 @@
+#!/bin/sh
+
+indent() {
+  sed -u 's/^/       /'
+}
+
+echo "-----> Install OpenCV-2-3-1"
+BIN_DIR="/usr/local/"
+DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+mkdir -p $BIN_DIR
+cd $BIN_DIR
+curl -L --silent $DOWNLOAD_URL | tar xz
+
+echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf
+ldconfig
+
+export PKG_CONFIG_PATH
+echo 'export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig"' >> $PROFILE_PATH
+
+echo "-----> Install libArcheLite.so
+BIN_DIR="/usr/local/lib"
+DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.so
+
+echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
+
+mkdir -p $BIN_DIR
+cd $BIN_DIR
+curl -L --silent $DOWNLOAD_URL
+
+echo "/usr/local/lib" > /etc/ld.so.conf.d/arche.conf
+ldconfig
+
