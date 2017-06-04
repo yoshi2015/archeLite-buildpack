@@ -104,7 +104,7 @@ indent() {
 }
 
 echo "-----> Install OpenCV-2-3-1"
-BUILD_DIR=$1
+#BUILD_DIR=$1
 OPENCV_DIR="opencv"
 DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
 
@@ -117,6 +117,7 @@ curl -L --silent $DOWNLOAD_URL | tar xz
 
 #PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
+echo "add LD_LIBRARY_PATH = $BUILD_DIR/$OPENCV_DIR/lib" | indent
 
 echo "-----> Install libArcheLite.so"
 ARCHE_DIR="arche"
@@ -131,4 +132,5 @@ curl -L --silent $DOWNLOAD_URL | tar xz
 
 #PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
+echo "add LD_LIBRARY_PATH = $BUILD_DIR/$ARCHE_DIR" | indent
 
