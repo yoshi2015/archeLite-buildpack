@@ -110,14 +110,14 @@ DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
-cd $BUILD_DIR
+cd $BUILD_DIR/.heroku
 mkdir -p $OPENCV_DIR
 cd $OPENCV_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
 #PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$OPENCV_DIR/lib"' >> $PROFILE_PATH
-echo "add LD_LIBRARY_PATH = $BUILD_DIR/$OPENCV_DIR/lib" | indent
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:.heroku/$OPENCV_DIR/lib"' >> $PROFILE_PATH
+echo "add LD_LIBRARY_PATH = .heroku/$OPENCV_DIR/lib" | indent
 
 echo "-----> Install libArcheLite.so"
 ARCHE_DIR="arche"
@@ -125,12 +125,12 @@ DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.tar.gz"
 
 echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
 
-cd $BUILD_DIR
+cd $BUILD_DIR/.heroku
 mkdir -p $ARCHE_DIR
 cd $ARCHE_DIR
 curl -L --silent $DOWNLOAD_URL | tar xz
 
 #PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$BUILD_DIR/$ARCHE_DIR"' >> $PROFILE_PATH
-echo "add LD_LIBRARY_PATH = $BUILD_DIR/$ARCHE_DIR" | indent
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:.heroku/$ARCHE_DIR"' >> $PROFILE_PATH
+echo "add LD_LIBRARY_PATH = .heroku/$ARCHE_DIR" | indent
 
