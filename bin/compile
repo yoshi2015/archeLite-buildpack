@@ -112,8 +112,6 @@ echo "DOWNLOAD DONE" | indent
 echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:.heroku/$ARCHE_DIR"' >> $PROFILE_PATH
 echo "add LD_LIBRARY_PATH = .heroku/$ARCHE_DIR" | indent
 
-ubuntu@ip-172-16-0-75:~/work/predix/archeLite-buildpack$
-
 # ### Finalize
 #
 
