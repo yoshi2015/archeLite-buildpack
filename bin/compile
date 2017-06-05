@@ -75,42 +75,8 @@ mkdir -p $(dirname $PROFILE_PATH)
 # Actuall do the conda steps.
 source $BIN_DIR/steps/conda_compile
 
-indent() {
-  sed -u 's/^/       /'
-}
-
-echo "-----> Install OpenCV-2-3-1"
-#BUILD_DIR=$1
-OPENCV_DIR="opencv"
-DOWNLOAD_URL="https://www3.arche.blue/test/OpenCV-2.3.1-bin.tar.gz"
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR/.heroku
-mkdir -p $OPENCV_DIR
-cd $OPENCV_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
-echo "DOWNLOAD DONE" | indent
-
-#PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:.heroku/$OPENCV_DIR/lib"' >> $PROFILE_PATH
-echo "add LD_LIBRARY_PATH = .heroku/$OPENCV_DIR/lib" | indent
-
-echo "-----> Install libArcheLite.so"
-ARCHE_DIR="arche"
-DOWNLOAD_URL="https://www3.arche.blue/test/libArcheLite.tar.gz"
-
-echo "DOWNLOAD_URL = " $DOWNLOAD_URL | indent
-
-cd $BUILD_DIR/.heroku
-mkdir -p $ARCHE_DIR
-cd $ARCHE_DIR
-curl -L --silent $DOWNLOAD_URL | tar xz
-echo "DOWNLOAD DONE" | indent
-
-#PROFILE_PATH="$BUILD_DIR/.profile.d/opencv.sh"
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:.heroku/$ARCHE_DIR"' >> $PROFILE_PATH
-echo "add LD_LIBRARY_PATH = .heroku/$ARCHE_DIR" | indent
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opencv2.3.1/lib"' >> $PROFILE_PATH
+echo "add LD_LIBRARY_PATH = ./opencv2.3.1/lib" | indent
 
 cd $BUILD_DIR
 
