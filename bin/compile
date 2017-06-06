@@ -75,9 +75,6 @@ mkdir -p $(dirname $PROFILE_PATH)
 # Actuall do the conda steps.
 source $BIN_DIR/steps/conda_compile
 
-echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opencv2.3.1/lib"' >> $PROFILE_PATH
-echo "add LD_LIBRARY_PATH = ./opencv2.3.1/lib" | indent
-
 cd $BUILD_DIR
 
 # ### Finalize
